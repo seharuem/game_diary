@@ -1,4 +1,6 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+
+const baseUrl = import.meta.env.BASE_URL;
 
 export const Wrap = styled.div.attrs({
 	className: 'flex flex-col h-screen relative'
@@ -15,7 +17,7 @@ export const Title = styled.h1.attrs({
 export const SetBtn = styled.button.attrs({
 	className: 'size-6 absolute right-6'
 })`
-	background: url(/cog.svg) center / contain no-repeat;
+	background: url(${baseUrl}cog.svg) center / contain no-repeat;
 	transition: rotate 0.4s ease-out;
 
 	&:hover {
@@ -27,6 +29,15 @@ export const Bar = styled.nav.attrs({
 	className: 'w-full mt-auto'
 })`
 	border-top: 1px solid white;
+`;
+
+const menuImg = (icon) => css`
+	&.on::before {
+		background-image: url(${baseUrl}${icon}.svg);
+	}
+	&::before {
+		background-image: url(${baseUrl}${icon}_off.svg);
+	}
 `;
 
 export const Menu = styled.button.attrs({
@@ -46,22 +57,13 @@ export const Menu = styled.button.attrs({
 		width: 1.8rem;
 		background: center / contain no-repeat;
 	}
-	&.diary.on::before {
-		background-image: url(/diary.svg);
+	&.diary {
+		${menuImg('diary')};
 	}
-  &.diary::before {
-    background-image: url(/diary_off.svg);
-  }
-	&.quest.on::before {
-		background-image: url(/quest.svg);
+	&.quest {
+		${menuImg('quest')};
 	}
-	&.quest::before {
-		background-image: url(/quest_off.svg);
-	}
-	&.schedule.on::before {
-		background-image: url(/schedule.svg);
-	}
-	&.schedule::before {
-		background-image: url(/schedule_off.svg);
+	&.schedule {
+		${menuImg('schedule')};
 	}
 `;

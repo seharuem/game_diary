@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const baseUrl = import.meta.env.BASE_URL;
+
 export const Box = styled.div.attrs({
 	className:
 		'w-100 h-120 p-10 rounded-[20px] border-solid border-3 border-(--main)'
@@ -30,7 +32,7 @@ export const Label = styled.label.attrs({
 	}
 
 	input[type='checkbox']:checked {
-		background: url(/check.svg) center / contain no-repeat;
+		background: url(${baseUrl}check.svg) center / contain no-repeat;
 	}
 
 	input::placeholder {

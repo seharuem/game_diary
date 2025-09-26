@@ -5,6 +5,6 @@ import svgr from 'vite-plugin-svgr';
 
 // https://vite.dev/config/
 export default defineConfig({
-	base: '/game_diary/',
+	base: process.env.NODE_ENV === 'production' ? '/game_diary/' : '/',
 	plugins: [react(), tailwindcss(), svgr()]
 });

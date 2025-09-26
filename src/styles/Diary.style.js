@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+const baseUrl = import.meta.env.BASE_URL;
+
 export const MonthBtn = styled.button.attrs({
 	type: 'button',
 	className: 'ml-6 w-max flex items-center justify-center gap-2 text-xl'
@@ -8,7 +10,7 @@ export const MonthBtn = styled.button.attrs({
 		content: '';
 		width: 1.2rem;
 		aspect-ratio: 1;
-		background: url(/calendar.svg) center / contain no-repeat;
+		background: url(${baseUrl}calendar.svg) center / contain no-repeat;
 	}
 	&:hover {
 		opacity: 0.8;
@@ -50,35 +52,41 @@ export const TodayWrap = styled.div.attrs({
 	className: 'text-xl text-(--mainFt) text-left py-4 px-6'
 })``;
 
-export const NewBtn = styled.button.attrs({
+export const BorderBtn = styled.button.attrs({
 	type: 'button',
-	className:
-		'w-max rounded-lg mt-8 py-2 px-4 self-center flex items-center gap-2'
+	className: 'rounded-lg py-2 px-4 border-solid border-2'
 })`
-	border: 2px solid;
-
-	&::after {
-		content: '';
-		width: 0.8rem;
-		aspect-ratio: 1;
-		background: url(/Plus.svg) center / contain no-repeat;
-	}
-
 	&:hover {
 		background-color: rgba(255, 255, 255, 0.1);
 	}
 `;
 
-export const DiaryList = styled.form.attrs({
-	className: 'p-6 pt-2 flex flex-col gap-4 w-full flex-1'
+export const NewBtn = styled(BorderBtn).attrs({
+	className:
+		'mt-8 self-center flex items-center gap-2'
 })`
-	label {
+	&::after {
+		content: '';
+		width: 0.8rem;
+		aspect-ratio: 1;
+		background: url(${baseUrl}Plus.svg) center / contain no-repeat;
+	}
+`;
+
+export const DiaryList = styled.form.attrs({
+	className: 'p-6 pt-0 flex flex-col gap-4 w-full flex-1'
+})`
+	.list {
 		display: flex;
 		align-items: center;
 		gap: 2rem;
 	}
-	input {
+	input[type='text'] {
 		padding: 0.4rem 1rem;
+	}
+	input[type='date'] {
+		font-size: 1.2rem;
+		color: white;
 	}
 	.field {
 		flex: 1;
@@ -86,19 +94,16 @@ export const DiaryList = styled.form.attrs({
 		border-radius: 12px;
 		position: relative;
 	}
-	label:has(textarea) {
-		flex: 1;
-	}
 	textarea {
 		width: 100%;
-		height: 100%;
+		flex: 1;
 		resize: none;
 		border-radius: inherit;
 		padding-inline: 0.4rem;
 	}
 `;
 
-export const GameSelect = styled.button.attrs({
+export const GameSelectBtn = styled.button.attrs({
 	type: 'button',
 	className: 'rounded-full px-3 bg-(--main30)'
 })`
@@ -140,7 +145,7 @@ export const ImgClose = styled.button.attrs({
 	right: -0.4rem;
 	width: 1.2rem;
 	aspect-ratio: 1;
-	background: url(/close.svg) center / 13px no-repeat;
+	background: url(${baseUrl}close.svg) center / 13px no-repeat;
 	border-radius: 50%;
 	background-color: white;
 	&:hover {
@@ -151,7 +156,7 @@ export const ImgClose = styled.button.attrs({
 export const ImgSelect = styled.label.attrs({
 	className: 'size-6 cursor-pointer'
 })`
-	background: url(/image.svg) center / contain no-repeat;
+	background: url(${baseUrl}image.svg) center / contain no-repeat;
 	&:hover {
 		opacity: 0.8;
 	}
@@ -159,3 +164,16 @@ export const ImgSelect = styled.label.attrs({
 		display: none;
 	}
 `;
+
+export const Cancel = styled.button.attrs({
+	type: 'button',
+	className: 'py-2'
+})`
+	&:hover {
+		opacity: 0.8;
+	}
+`;
+
+export const Submit = styled(Cancel).attrs({
+	className: 'border-2 border-solid rounded-lg px-4'
+})``;

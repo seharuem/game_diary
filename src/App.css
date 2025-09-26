@@ -6,6 +6,37 @@
 	--mainFt: #90c2ff;
 	--pink: #ca5497;
 	--pink30: #ca549740;
+
+	--pc01: #FF99EB;
+	--pc01B: #FF99EB40;
+	--pc02: #CD90FF;
+	--pc02B: #CD90FF40;
+	--pc03: #7EBFFF;
+	--pc03B: #7EBFFF40;
+	--pc04: #605BFF;
+	--pc04B: #605BFF40;
+	--pc05: #7A39CE;
+	--pc05B: #7A39CE40;
+	--pc06: #FF9999;
+	--pc06B: #FF999940;
+	--pc07: #EEEB90;
+	--pc07B: #EEEB9040;
+	--pc08: #99FFA0;
+	--pc08B: #99FFA040;
+	--pc09: #90FFE0;
+	--pc09B: #90FFE040;
+	--pc10: #CA5497;
+	--pc10B: #CA549740;
+	--pc11: #FF9F64;
+	--pc11B: #FF9F6440;
+	--pc12: #FFB247;
+	--pc12B: #FFB24740;
+	--pc13: #82FF7D;
+	--pc13B: #82FF7D40;
+	--pc14: #FFFFFF;
+	--pc14B: #FFFFFF40;
+	--pc15: #777777;
+	--pc15B: #77777740;
 }
 
 #root {
