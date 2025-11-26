@@ -1,0 +1,10 @@
+export { default as CalendarW } from './CalendarW';
+export { default as ColorPalette } from './ColorPalette';
+export { default as DiaryC } from './DiaryC';
+export { default as MyGame } from './MyGame';
+export { default as MyGameList } from './MyGameList';
+export { default as MyGameEdit } from './MyGameEdit';
+export { default as Header } from './Header';
+export { default as ImgUpload } from './ImgUpload';
+export { default as NewDiary } from './NewDiary';
+export { default as TabBar } from './TabBar';

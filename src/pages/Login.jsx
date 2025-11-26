@@ -19,7 +19,7 @@ export default function Login() {
 			<Logo />
 			<Box>
 				<form className='flex flex-col gap-10'>
-					<div className='flex flex-col gap-6'>
+					<div className='flex flex-col gap-6 items-center'>
 						{Form.map((label) => (
 							<Label key={label}>
 								{label.label}

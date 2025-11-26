@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import { Palette, Color } from '../styles/Modal.style';
 
 const number = Array.from({ length: 15 }, (_, i) => i + 1);

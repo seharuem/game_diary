@@ -11,8 +11,9 @@
 		"predeploy": "npm run build",
 		"deploy": "gh-pages -d dist"
 	},
-  "homepage": "https://seharuem.github.io/game_diary/",
+	"homepage": "https://seharuem.github.io/game_diary/",
 	"dependencies": {
+		"framer-motion": "^12.23.24",
 		"react": "^19.1.1",
 		"react-dom": "^19.1.1",
 		"react-router-dom": "^7.8.0",
@@ -31,6 +32,6 @@
 		"globals": "^16.3.0",
 		"tailwindcss": "^4.1.11",
 		"vite": "^7.1.0",
-		"vite-plugin-svgr": "^4.3.0"
+		"vite-plugin-svgr": "^4.5.0"
 	}
 }

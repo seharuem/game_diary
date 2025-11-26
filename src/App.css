@@ -7,36 +7,71 @@
 	--pink: #ca5497;
 	--pink30: #ca549740;
 
-	--pc01: #FF99EB;
-	--pc01B: #FF99EB40;
-	--pc02: #CD90FF;
-	--pc02B: #CD90FF40;
-	--pc03: #7EBFFF;
-	--pc03B: #7EBFFF40;
-	--pc04: #605BFF;
-	--pc04B: #605BFF40;
-	--pc05: #7A39CE;
-	--pc05B: #7A39CE40;
-	--pc06: #FF9999;
-	--pc06B: #FF999940;
-	--pc07: #EEEB90;
-	--pc07B: #EEEB9040;
-	--pc08: #99FFA0;
-	--pc08B: #99FFA040;
-	--pc09: #90FFE0;
-	--pc09B: #90FFE040;
-	--pc10: #CA5497;
-	--pc10B: #CA549740;
-	--pc11: #FF9F64;
-	--pc11B: #FF9F6440;
-	--pc12: #FFB247;
-	--pc12B: #FFB24740;
-	--pc13: #82FF7D;
-	--pc13B: #82FF7D40;
-	--pc14: #FFFFFF;
-	--pc14B: #FFFFFF40;
+	--pc01: #ff99eb;
+	--pc01B: #ff99eb40;
+	--pc02: #cd90ff;
+	--pc02B: #cd90ff40;
+	--pc03: #7ebfff;
+	--pc03B: #7ebfff40;
+	--pc04: #605bff;
+	--pc04B: #605bff40;
+	--pc05: #7a39ce;
+	--pc05B: #7a39ce40;
+	--pc06: #ff9999;
+	--pc06B: #ff999940;
+	--pc07: #eeeb90;
+	--pc07B: #eeeb9040;
+	--pc08: #99ffa0;
+	--pc08B: #99ffa040;
+	--pc09: #90ffe0;
+	--pc09B: #90ffe040;
+	--pc10: #ca5497;
+	--pc10B: #ca549740;
+	--pc11: #ff9f64;
+	--pc11B: #ff9f6440;
+	--pc12: #ffb247;
+	--pc12B: #ffb24740;
+	--pc13: #82ff7d;
+	--pc13B: #82ff7d40;
+	--pc14: #ffffff;
+	--pc14B: #ffffff40;
 	--pc15: #777777;
 	--pc15B: #77777740;
+}
+
+.heart {
+	width: 32px;
+}
+
+.heart path:last-child {
+	stroke: var(--pink);
+	animation: beat 0.4s ease-out 1s backwards;
+}
+
+@keyframes beat {
+	0% {
+		fill: transparent;
+	}
+	100% {
+		fill: var(--pink);
+	}
+}
+
+.fade {
+	position: fixed;
+	inset: 0;
+	background-color: var(--mainD);
+	animation: fade 0.5s ease-out 2s forwards;
+	cursor: default;
+}
+
+@keyframes fade {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
+	}
 }
 
 #root {

@@ -1,15 +1,13 @@
 import { useState } from 'react';
 import { ImgPreview, ImgClose, ImgSelect } from '../styles/Diary.style';
 
-export default function ImgUpload() {
-	const [imgUrls, setImgUrls] = useState([]);
-
+export default function ImgUpload({ imgUrls, setImgUrls }) {
 	const selectImg = (e) => {
 		const files = e.target.files;
 		if (files.length === 0) return;
 
 		const newUrls = Array.from(files).map((file) => URL.createObjectURL(file));
-		setImgUrls(prevUrls => [...prevUrls, ...newUrls]);
+		setImgUrls((prevUrls) => [...prevUrls, ...newUrls]);
 	};
 
 	const ImgRemove = (index) => {

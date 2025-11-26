@@ -18,6 +18,7 @@ export const Label = styled.label.attrs({
 	}
 
 	&:has(input[type='checkbox']) {
+		width: max-content;
 		font-size: 1.2rem;
 		cursor: pointer;
 		gap: 16px;
@@ -32,7 +33,7 @@ export const Label = styled.label.attrs({
 	}
 
 	input[type='checkbox']:checked {
-		background: url(${baseUrl}check.svg) center / contain no-repeat;
+		background: url(/check.svg) center / contain no-repeat;
 	}
 
 	input::placeholder {

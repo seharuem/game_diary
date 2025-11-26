@@ -16,7 +16,7 @@ function WeekDay({ week, date, isToday, isSelected, onClick }) {
 	);
 }
 
-export default function CalendarW({ isDiary, setDate }) {
+export default function CalendarW({ isNew, setDate }) {
 	const today = new Date();
 	const year = today.getFullYear();
 	const month = today.getMonth();
@@ -72,7 +72,7 @@ export default function CalendarW({ isDiary, setDate }) {
 				))}
 			</WeekWrap>
 
-			{!isDiary && (
+			{!isNew && (
 				<TodayWrap>
 					{weekDates[select].ymd.toLocaleDateString('ko-KR', {
 						year: 'numeric',

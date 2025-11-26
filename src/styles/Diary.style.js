@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { GameItem } from './Modal.style';
 
 const baseUrl = import.meta.env.BASE_URL;
 
@@ -49,7 +50,11 @@ export const DateWrap = styled.button.attrs({
 `;
 
 export const TodayWrap = styled.div.attrs({
-	className: 'text-xl text-(--mainFt) text-left py-4 px-6'
+	className: 'text-xl text-left py-4 px-6'
+})``;
+
+export const DiaryWrap = styled.div.attrs({
+	className: 'flex flex-col gap-2 px-4 flex-1 overflow-y-auto'
 })``;
 
 export const BorderBtn = styled.button.attrs({
@@ -62,8 +67,7 @@ export const BorderBtn = styled.button.attrs({
 `;
 
 export const NewBtn = styled(BorderBtn).attrs({
-	className:
-		'mt-8 self-center flex items-center gap-2'
+	className: 'my-8 self-center flex items-center gap-2'
 })`
 	&::after {
 		content: '';
@@ -103,9 +107,21 @@ export const DiaryList = styled.form.attrs({
 	}
 `;
 
+export const ChoiceGame = styled(GameItem).attrs({
+	as: 'div'
+})`
+	font-size: 1rem;
+	height: 28px;
+	width: max-content;
+	max-width: initial;
+	&:hover {
+		opacity: 1;
+	}
+`;
+
 export const GameSelectBtn = styled.button.attrs({
 	type: 'button',
-	className: 'rounded-full px-3 bg-(--main30)'
+	className: 'rounded-md px-3 bg-(--main30)'
 })`
 	border: 2px solid var(--main);
 	&:hover {
@@ -176,4 +192,32 @@ export const Cancel = styled.button.attrs({
 
 export const Submit = styled(Cancel).attrs({
 	className: 'border-2 border-solid rounded-lg px-4'
+})``;
+
+export const Bg = styled.div.attrs({
+	className: 'w-full rounded-3xl p-8 pt-3 flex flex-col gap-2'
+})`
+	background-color: rgba(255, 255, 255, 0.1);
+`;
+
+export const Time = styled.span.attrs({
+	className: 'text-lg text-(--mainFt) opacity-40'
+})``;
+
+export const Title = styled.h3.attrs({
+	className: 'text-2xl text-left text-(--mainFt)'
+})``;
+
+export const Img = styled.div.attrs({
+	className:
+		'w-full h-48 bg-white/10 rounded-2xl flex gap-4 overflow-x-auto p-2 scrollbar-gutter: stable'
+})`
+	img {
+		height: 100%;
+	}
+`;
+
+export const Text = styled(Title).attrs({
+	as: 'p',
+	className: 'text-white'
 })``;

@@ -38,18 +38,30 @@ export const Button = styled.button.attrs({
 	}
 `;
 
-export const Undo = styled.button.attrs({
+const Btn = styled.button.attrs({
 	type: 'button',
 	className: 'w-max flex gap-1 text-(--main) text-xl'
 })`
-	&::before {
-		content: '';
-		width: 1.5rem;
-		aspect-ratio: 1;
-		background: url(${baseUrl}undo.svg) center / contain no-repeat;
-	}
 	&:hover {
 		opacity: 0.8;
+	}
+	&::before, &::after {
+		content: '';
+		aspect-ratio: 1;
+		background: center / contain no-repeat;
+`;
+
+export const Undo = styled(Btn)`
+	&::before {
+		width: 1.5rem;
+		background-image: url(${baseUrl}undo.svg);
+	}
+`;
+
+export const Delete = styled(Btn)`
+	&::after {
+		width: 1.2rem;
+		background-image: url(${baseUrl}Trash.svg);
 	}
 `;
 
@@ -103,12 +115,16 @@ export const GameList = styled.ul.attrs({
 	li {
 		display: flex;
 		justify-content: space-between;
+		gap: 1.2rem;
+		align-items: center;
 	}
 	.select {
+		height: max-content;
 		border: 2px solid var(--main);
 		background-color: var(--main30);
 		border-radius: 5px;
 		padding: 0.2rem 0.4rem;
+		flex-shrink: 0;
 	}
 	.select:hover {
 		background-color: var(--main50);
@@ -127,8 +143,14 @@ export const GameItem = styled.button.attrs({
 		width: 1rem;
 		aspect-ratio: 1;
 		background: url(${baseUrl}Pen.svg) center / contain no-repeat;
+		flex-shrink: 0;
 	}
-
+	max-width: calc(100% - 5rem);
+	span {
+		overflow: hidden;
+		text-overflow: ellipsis;
+		white-space: nowrap;
+	}
 	&:hover {
 		opacity: 0.8;
 	}
