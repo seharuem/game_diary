@@ -1,13 +1,16 @@
+import { gameStore } from '../store/gameStore';
+import { diaryStore } from '../store/newStore';
 import { ModalTitle, GameList, GameItem, Button } from '../styles/Modal.style';
 
 export default function MyGameList({
 	games,
 	setGameData,
 	setEditIndex,
-	setMode,
-	setIsChoice,
-	setChoiceIndex
+	setMode
 }) {
+	const { close, setChoiceI } = gameStore();
+	const { isNew } = diaryStore();
+
 	const startAdd = () => {
 		setGameData({ name: '', color: 3 });
 		setEditIndex(null);
@@ -38,16 +41,18 @@ export default function MyGameList({
 								>
 									<span>{game.name}</span>
 								</GameItem>
-								<button
-									type='button'
-									className='select'
-									onClick={() => {
-										setIsChoice(false);
-										setChoiceIndex(index);
-									}}
-								>
-									선택
-								</button>
+								{isNew && (
+									<button
+										type='button'
+										className='select'
+										onClick={() => {
+											close();
+											setChoiceI(index);
+										}}
+									>
+										선택
+									</button>
+								)}
 							</li>
 						);
 					})}

@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, keyframes } from 'styled-components';
 
 const baseUrl = import.meta.env.BASE_URL;
 
@@ -14,19 +14,25 @@ export const Title = styled.h1.attrs({
 	className: 'text-2xl pointer-events-none'
 })``;
 
-export const SetBtn = styled.button.attrs({
-	className: 'size-6 absolute right-6'
+const rotate = keyframes`
+	0% { rotate: 30deg }
+	100% { rotate: -30deg }
+`;
+
+export const Btn = styled.button.attrs({
+	className: 'w-8 h-6'
 })`
-	background: url(${baseUrl}cog.svg) center / contain no-repeat;
+	background: center / contain no-repeat;
+	background-image: url(/${(props) => props.$img}.svg);
 	transition: rotate 0.4s ease-out;
 
 	&:hover {
-		rotate: 90deg;
+		animation: ${rotate} 0.4s linear alternate infinite;
 	}
 `;
 
 export const Bar = styled.nav.attrs({
-	className: 'w-full mt-auto'
+	className: 'mt-auto z-1'
 })`
 	border-top: 1px solid white;
 `;
@@ -43,7 +49,7 @@ const menuImg = (icon) => css`
 export const Menu = styled.button.attrs({
 	type: 'button',
 	className:
-		'w-full py-4 text-white text-lg flex flex-col items-center justify-center gap-1 opacity-50'
+		'w-full h-22 text-white text-lg flex flex-col items-center justify-center gap-1 opacity-50'
 })`
 	&.on {
 		opacity: 1;

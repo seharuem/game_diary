@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import { MyGameList, MyGameEdit } from '../comps';
 import { ModalBg, ModalBox, ModalClose } from '../styles/Modal.style';
+import { gameStore } from '../store/gameStore';
 
-export default function MyGame({ setIsChoice, games, setGames, setChoiceIndex }) {
+export default function MyGame({ games, setGames }) {
 	const [mode, setMode] = useState('view'); // 'view', 'add', 'edit'
 	const [editIndex, setEditIndex] = useState(null);
 	const [gameData, setGameData] = useState({ name: '', color: 3 });
+	const { isChoice, close } = gameStore();
 
 	const cancel = () => {
 		setMode('view');
@@ -36,9 +38,7 @@ export default function MyGame({ setIsChoice, games, setGames, setChoiceIndex })
 		games,
 		setGameData,
 		setEditIndex,
-		setMode,
-		setIsChoice,
-		setChoiceIndex
+		setMode
 	};
 
 	const editProps = {
@@ -50,6 +50,8 @@ export default function MyGame({ setIsChoice, games, setGames, setChoiceIndex })
 		DeleteGame
 	};
 
+	if (!isChoice) return;
+
 	return (
 		<ModalBg>
 			<ModalBox>
@@ -57,7 +59,7 @@ export default function MyGame({ setIsChoice, games, setGames, setChoiceIndex })
 
 				{(mode === 'add' || mode === 'edit') && <MyGameEdit {...editProps} />}
 			</ModalBox>
-			<ModalClose onClick={() => setIsChoice(false)}>취소</ModalClose>
+			<ModalClose onClick={close}>취소</ModalClose>
 		</ModalBg>
 	);
 }

@@ -2,31 +2,25 @@ import { useState } from 'react';
 import { CalendarW, Header, NewDiary, DiaryC, TabBar, MyGame } from '../comps';
 import { Wrap } from '../styles/Comp.style';
 import { DiaryWrap, NewBtn } from '../styles/Diary.style';
+import { diaryStore } from '../store/newStore';
+import { gameStore } from '../store/gameStore';
 
 export default function Diary() {
-	const [isNew, setIsNew] = useState(false);
 	const [date, setDate] = useState();
-	const [isChoice, setIsChoice] = useState(false);
 	const [games, setGames] = useState([]);
-	const [choiceIndex, setChoiceIndex] = useState(null);
 	const [diaries, setDiaries] = useState([]);
+
+	const { isNew, write } = diaryStore();
+	const { setChoiceI } = gameStore();
 
 	const diaryProps = {
 		date,
 		setDate,
-		setIsChoice,
-		setIsNew,
 		games,
-		choiceIndex,
 		setDiaries
 	};
 
-	const gameProps = {
-		setIsChoice,
-		games,
-		setGames,
-		setChoiceIndex
-	};
+	const gameProps = { games, setGames };
 
 	return (
 		<Wrap>
@@ -34,7 +28,7 @@ export default function Diary() {
 
 			{!isNew ? (
 				<>
-					<CalendarW isNew={isNew} setDate={setDate} />
+					<CalendarW setDate={setDate} />
 
 					{diaries.length !== 0 && (
 						<DiaryWrap>
@@ -55,8 +49,8 @@ export default function Diary() {
 					)}
 					<NewBtn
 						onClick={() => {
-							setIsNew(true);
-							setChoiceIndex(null);
+							write();
+							setChoiceI(null);
 						}}
 					>
 						새 일기 작성
@@ -65,10 +59,9 @@ export default function Diary() {
 			) : (
 				<NewDiary {...diaryProps} />
 			)}
+			<MyGame {...gameProps} />
 
 			<TabBar page='diary' />
-
-			{isChoice && <MyGame {...gameProps} />}
 		</Wrap>
 	);
 }

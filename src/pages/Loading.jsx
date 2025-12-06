@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion';
 import styled, { keyframes } from 'styled-components';
 import { Wrap } from '../styles/Comp.style';
-import Heart from '/public/heart.svg?react';
+import Heart from '/src/assets/img/heart.svg?react';
 
 const MotionSvg = motion.create(Heart, { forwardMotionProps: true });
 
@@ -60,7 +60,7 @@ export default function Loading() {
 	);
 
 	return (
-		<Wrap className='justify-center items-center fade'>
+		<Wrap className='justify-center items-center fade z-10'>
 			<MotionLogo position='top' initial='게임' className='right-7' />
 			<MotionLogo
 				position='bottom'

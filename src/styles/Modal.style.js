@@ -3,14 +3,14 @@ import styled, { css } from 'styled-components';
 const baseUrl = import.meta.env.BASE_URL;
 
 export const ModalBg = styled.div.attrs({
-	className: 'fixed inset-0 flex items-center justify-center'
+	className: 'fixed inset-0 bottom-22 flex items-center justify-center'
 })`
 	background-color: rgba(0, 0, 0, 0.8);
 `;
 
 export const ModalClose = styled.button.attrs({
 	type: 'button',
-	className: 'absolute bottom-40'
+	className: 'absolute bottom-30'
 })`
 	&:hover {
 		opacity: 0.8;
@@ -110,13 +110,14 @@ export const bgColor = (num) => {
 };
 
 export const GameList = styled.ul.attrs({
-	className: 'pt-5 flex flex-col gap-5 overflow-y-auto'
+	className: 'pt-5 h-full flex flex-col flex-wrap gap-5 overflow-y-auto'
 })`
 	li {
 		display: flex;
 		justify-content: space-between;
 		gap: 1.2rem;
 		align-items: center;
+		max-width: 100%;
 	}
 	.select {
 		height: max-content;
@@ -145,7 +146,9 @@ export const GameItem = styled.button.attrs({
 		background: url(${baseUrl}Pen.svg) center / contain no-repeat;
 		flex-shrink: 0;
 	}
+	// max-width: 100%;
 	max-width: calc(100% - 5rem);
+	// flex: 1;
 	span {
 		overflow: hidden;
 		text-overflow: ellipsis;

@@ -7,20 +7,16 @@ import {
 	BorderBtn,
 	ChoiceGame
 } from '../styles/Diary.style';
+import { gameStore } from '../store/gameStore';
+import { diaryStore } from '../store/newStore';
 
-export default function NewDiary({
-	date,
-	setDate,
-	setIsChoice,
-	setIsNew,
-	games,
-	choiceIndex,
-	setDiaries
-}) {
+export default function NewDiary({ date, setDate, games, setDiaries }) {
 	const [formData, setFormData] = useState();
 	const [imgUrls, setImgUrls] = useState([]);
+	const { open, choiceI } = gameStore();
+	const { close } = diaryStore();
 
-	const color = games[choiceIndex] ? games[choiceIndex].color : null;
+	const color = games[choiceI] ? games[choiceI].color : null;
 	const num = color ? color.toString().padStart(2, '0') : null;
 
 	const formInput = (e) => {
@@ -29,7 +25,7 @@ export default function NewDiary({
 	};
 
 	const saveDiary = () => {
-		if (choiceIndex === null) return;
+		if (choiceI === null) return;
 		if (formData.text.trim() === '') return;
 
 		const now = new Date(date);
@@ -43,11 +39,11 @@ export default function NewDiary({
 			...formData,
 			id: now.toDateString(),
 			time: time,
-			game: choiceIndex,
+			game: choiceI,
 			img: imgUrls.length > 0 ? imgUrls : null
 		};
 		setDiaries((prev) => [...prev, newDiary]);
-		setIsNew(false);
+		close();
 		setFormData(null);
 	};
 
@@ -64,16 +60,10 @@ export default function NewDiary({
 			<div className='list'>
 				게임
 				<div className='flex items-center gap-4'>
-					{games[choiceIndex] && (
-						<ChoiceGame $num={num}>{games[choiceIndex].name}</ChoiceGame>
+					{games[choiceI] && (
+						<ChoiceGame $num={num}>{games[choiceI].name}</ChoiceGame>
 					)}
-					<GameSelectBtn
-						onClick={() => {
-							setIsChoice(true);
-						}}
-					>
-						선택
-					</GameSelectBtn>
+					<GameSelectBtn onClick={open}>선택</GameSelectBtn>
 				</div>
 			</div>
 			<label className='list'>
@@ -96,7 +86,7 @@ export default function NewDiary({
 			</div>
 
 			<div className='flex justify-between'>
-				<Cancel onClick={() => setIsNew(false)}>취소</Cancel>
+				<Cancel onClick={close}>취소</Cancel>
 				<BorderBtn onClick={saveDiary}>작성 완료</BorderBtn>
 			</div>
 		</DiaryList>
