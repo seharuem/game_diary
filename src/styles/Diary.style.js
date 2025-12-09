@@ -110,6 +110,7 @@ export const DiaryList = styled.form.attrs({
 export const ChoiceGame = styled(GameItem).attrs({
 	as: 'div'
 })`
+	align-self: center;
 	font-size: 1rem;
 	height: 28px;
 	width: max-content;
@@ -195,17 +196,13 @@ export const Submit = styled(Cancel).attrs({
 })``;
 
 export const Bg = styled.div.attrs({
-	className: 'w-full rounded-3xl p-8 pt-3 flex flex-col gap-2'
+	className: 'w-full rounded-3xl p-8 flex flex-col gap-2'
 })`
 	background-color: rgba(255, 255, 255, 0.1);
 `;
 
-export const Time = styled.span.attrs({
-	className: 'text-lg text-(--mainFt) opacity-40'
-})``;
-
 export const Title = styled.h3.attrs({
-	className: 'text-2xl text-left text-(--mainFt)'
+	className: 'text-2xl text-(--mainFt)'
 })``;
 
 export const Img = styled.div.attrs({
@@ -219,5 +216,5 @@ export const Img = styled.div.attrs({
 
 export const Text = styled(Title).attrs({
 	as: 'p',
-	className: 'text-white'
+	className: 'text-white text-left'
 })``;

@@ -1,14 +1,18 @@
-import { Bg, ChoiceGame, Time, Title, Img, Text } from '../styles/Diary.style';
+import { gameStore } from '../store/gameStore';
+import { Bg, ChoiceGame, Title, Img, Text } from '../styles/Diary.style';
 
-export default function DiaryC({ index, time, diary, games }) {
+export default function DiaryC({ diary }) {
+	const { games } = gameStore();
+
 	const color = games[diary.game].color;
 	const num = color.toString().padStart(2, '0');
 
 	return (
 		<Bg>
-			<Time>{time}</Time>
 			<ChoiceGame $num={num}>{games[diary.game].name}</ChoiceGame>
-			<Title>#{index + 1} {diary.title}</Title>
+			<Title>
+				{diary.title}
+			</Title>
 
 			{diary.img && (
 				<Img>

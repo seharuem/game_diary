@@ -1,26 +1,22 @@
 import { gameStore } from '../store/gameStore';
-import { diaryStore } from '../store/newStore';
+import { diaryStore } from '../store/diaryStore';
 import { ModalTitle, GameList, GameItem, Button } from '../styles/Modal.style';
 
-export default function MyGameList({
-	games,
-	setGameData,
-	setEditIndex,
-	setMode
-}) {
-	const { close, setChoiceI } = gameStore();
+export default function MyGameList() {
+	const { close, setChoiceI, setMode, setEditIdx, setGameData, games } =
+		gameStore();
 	const { isNew } = diaryStore();
 
 	const startAdd = () => {
 		setGameData({ name: '', color: 3 });
-		setEditIndex(null);
+		setEditIdx(null);
 		setMode('add');
 	};
 
 	const startEdit = (index) => {
 		const game = games[index];
 		setGameData({ name: game.name, color: game.color });
-		setEditIndex(index);
+		setEditIdx(index);
 		setMode('edit');
 	};
 

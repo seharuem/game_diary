@@ -8,13 +8,12 @@ import {
 	ChoiceGame
 } from '../styles/Diary.style';
 import { gameStore } from '../store/gameStore';
-import { diaryStore } from '../store/newStore';
+import { diaryStore } from '../store/diaryStore';
 
-export default function NewDiary({ date, setDate, games, setDiaries }) {
+export default function NewDiary({ date, setDate }) {
 	const [formData, setFormData] = useState();
-	const [imgUrls, setImgUrls] = useState([]);
-	const { open, choiceI } = gameStore();
-	const { close } = diaryStore();
+	const { open, choiceI, games } = gameStore();
+	const { close, addDiary, imgUrls } = diaryStore();
 
 	const color = games[choiceI] ? games[choiceI].color : null;
 	const num = color ? color.toString().padStart(2, '0') : null;
@@ -28,21 +27,14 @@ export default function NewDiary({ date, setDate, games, setDiaries }) {
 		if (choiceI === null) return;
 		if (formData.text.trim() === '') return;
 
-		const now = new Date(date);
-		const time = now.toLocaleTimeString('ko-KR', {
-			hour: '2-digit',
-			minute: '2-digit',
-			hour12: false
-		});
-
 		const newDiary = {
 			...formData,
-			id: now.toDateString(),
-			time: time,
+			id: formData.title,
+			date: new Date(date).toDateString(),
 			game: choiceI,
 			img: imgUrls.length > 0 ? imgUrls : null
 		};
-		setDiaries((prev) => [...prev, newDiary]);
+		addDiary(newDiary);
 		close();
 		setFormData(null);
 	};
@@ -82,7 +74,7 @@ export default function NewDiary({ date, setDate, games, setDiaries }) {
 					placeholder='내용을 입력해주세요.'
 					onChange={formInput}
 				></textarea>
-				<ImgUpload imgUrls={imgUrls} setImgUrls={setImgUrls} />
+				<ImgUpload />
 			</div>
 
 			<div className='flex justify-between'>
